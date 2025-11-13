@@ -6,8 +6,7 @@ import { useRegister } from '../hooks/useAuth';
 
 const registerSchema = z
     .object({
-        firstname: z.string().min(1, 'First name is required'),
-        surname: z.string().min(1, 'Surname is required'),
+        name: z.string().min(1, 'Name is required'),
         email: z.string().email('Please enter a valid email address'),
         password: z.string().min(8, 'Password must be at least 8 characters long'),
         password_confirmation: z.string().min(1, 'Please confirm your password'),
@@ -32,7 +31,7 @@ export default function RegisterPage() {
 
     const onSubmit = (values: RegisterForm) => {
         registerMutation.mutate({
-            name: `${values.firstname} ${values.surname}`.trim(),
+            name: values.name,
             email: values.email,
             password: values.password,
             password_confirmation: values.password_confirmation,
@@ -50,32 +49,17 @@ export default function RegisterPage() {
                     onSubmit={handleSubmit(onSubmit)}
                     className="space-y-4 text-left text-sm"
                 >
-                    <div className="flex gap-3">
-                        <div className="flex-1">
-                            <input
-                                {...register('firstname')}
-                                placeholder="Firstname"
-                                className="w-full rounded-full bg-grayLight px-4 py-3 text-sm"
-                            />
-                            {errors.firstname && (
-                                <p className="mt-1 text-xs text-red-500">
-                                    {errors.firstname.message}
-                                </p>
-                            )}
-                        </div>
-
-                        <div className="flex-1">
-                            <input
-                                {...register('surname')}
-                                placeholder="Surname"
-                                className="w-full rounded-full bg-grayLight px-4 py-3 text-sm"
-                            />
-                            {errors.surname && (
-                                <p className="mt-1 text-xs text-red-500">
-                                    {errors.surname.message}
-                                </p>
-                            )}
-                        </div>
+                    <div>
+                        <input
+                            {...register('name')}
+                            placeholder="Full name"
+                            className="w-full rounded-full bg-grayLight px-4 py-3 text-sm"
+                        />
+                        {errors.name && (
+                            <p className="mt-1 text-xs text-red-500">
+                                {errors.name.message}
+                            </p>
+                        )}
                     </div>
 
                     <div>

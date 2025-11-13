@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { api } from '../lib/api'; 
+import { api } from '../lib/api';
 import { useAuthStore } from '../store/authStore';
 import type { User } from '../types/User';
 
@@ -58,7 +58,7 @@ export const useRegister = () => {
         },
     });
 };
-
+ 
 export const useLogout = () => {
     const qc = useQueryClient();
     const reset = useAuthStore((s) => s.reset);
