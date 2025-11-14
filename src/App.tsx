@@ -17,22 +17,25 @@ export default function App() {
   if (isLoading) return null;
 
   const currentUser = user ?? userFromQuery ?? null;
-
   const isFeed = location.pathname === "/feed";
 
+  const subtitle =
+    isFeed
+      ? "Your personal MiniTweet timeline"
+      : location.pathname === "/register"
+        ? "Create your MiniTweet account"
+        : "Sign in to continue";
+
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-900">
+    <div className="min-h-screen bg-slate-50 text-neutral-900">
       <Navbar />
 
-      <main className="flex justify-center px-3 py-6">
-        <div className="w-full max-w-5xl rounded-none bg-neutral-50/95 py-8 lg:rounded-xl lg:px-8">
-          <div className="mb-6 flex items-center justify-between px-2 text-xs text-neutral-500">
-            <span>
-              {isFeed
-                ? "Your feed"
-                : location.pathname === "/register"
-                  ? "Create your MiniTweet account"
-                  : "Sign in to continue"}
+      <main className="flex justify-center px-3 py-8">
+        <div className="w-full max-w-5xl rounded-none border border-neutral-200 bg-white py-10 shadow-sm lg:rounded-3xl lg:px-10">
+          <div className="mb-8 flex items-center justify-between px-1 text-xs text-neutral-500">
+            <span>{subtitle}</span>
+            <span className="hidden text-[11px] text-neutral-400 sm:inline">
+              MiniTweet · Lightweight social feed
             </span>
           </div>
 
@@ -59,7 +62,6 @@ export default function App() {
         </div>
       </main>
 
-      {/* shadcn toast provider */}
       <Toaster />
     </div>
   );

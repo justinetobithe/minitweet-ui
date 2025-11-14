@@ -31,9 +31,8 @@ export default function Navbar() {
         : "MT";
 
     return (
-        <header className="w-full border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
+        <header className="w-full border-b border-neutral-200 bg-white/90 shadow-sm backdrop-blur">
             <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-                {/* Brand */}
                 <div
                     className="flex cursor-pointer items-center gap-2"
                     onClick={() => navigate(user ? "/feed" : "/login")}
@@ -41,15 +40,14 @@ export default function Navbar() {
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-emerald-400 text-xs font-bold text-neutral-950">
                         MT
                     </div>
-                    <span className="text-sm font-semibold text-neutral-50">
+                    <span className="text-sm font-semibold text-neutral-900">
                         MiniTweet
                     </span>
                 </div>
 
-                {/* Right side */}
                 {user ? (
                     <div className="flex items-center gap-3">
-                        <span className="hidden text-xs text-neutral-300 sm:inline">
+                        <span className="hidden text-xs text-neutral-600 sm:inline">
                             {user.name}
                         </span>
 
@@ -57,10 +55,10 @@ export default function Navbar() {
                             <DropdownMenuTrigger asChild>
                                 <button
                                     type="button"
-                                    className="flex items-center justify-center rounded-full border border-neutral-700 bg-neutral-900 p-0.5 hover:border-neutral-500"
+                                    className="flex items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 p-0.5 hover:border-neutral-400"
                                 >
                                     <Avatar className="h-8 w-8">
-                                        <AvatarFallback className="bg-neutral-800 text-[10px] text-neutral-100">
+                                        <AvatarFallback className="bg-neutral-200 text-[10px] text-neutral-700">
                                             {initials}
                                         </AvatarFallback>
                                     </Avatar>
@@ -70,7 +68,9 @@ export default function Navbar() {
                                 <DropdownMenuLabel className="text-[11px]">
                                     Signed in as
                                     <br />
-                                    <span className="font-medium">{user.name}</span>
+                                    <span className="font-medium text-neutral-900">
+                                        {user.name}
+                                    </span>
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem
@@ -81,7 +81,7 @@ export default function Navbar() {
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem
-                                    className="cursor-pointer text-red-500"
+                                    className="cursor-pointer text-red-500 focus:text-red-600"
                                     onClick={() => logout.mutate()}
                                 >
                                     Logout
@@ -95,14 +95,14 @@ export default function Navbar() {
                             <Button
                                 size="sm"
                                 variant="ghost"
-                                className="text-xs text-neutral-200"
+                                className="text-xs text-neutral-700"
                                 asChild
                             >
                                 <Link to="/login">Login</Link>
                             </Button>
                             <Button
                                 size="sm"
-                                className="rounded-full bg-sky-500 text-xs font-semibold text-neutral-950 hover:bg-sky-400"
+                                className="rounded-full bg-sky-500 text-xs font-semibold text-white hover:bg-sky-400"
                                 asChild
                             >
                                 <Link to="/register">Sign up</Link>
