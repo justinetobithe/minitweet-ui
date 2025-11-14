@@ -179,7 +179,7 @@ export default function TweetCard({ tweet, currentUserId }: Props) {
                     )}
                 </div>
 
-                <p className="mb-2 text-base leading-relaxed text-neutral-900">
+                <p className="mb-2 break-words text-base leading-relaxed text-neutral-900">
                     {tweet.body}
                 </p>
 
